@@ -1,10 +1,10 @@
-<%- include('partials/header.ejs') %>
+<%- include('../../partials/header.ejs') %>
 
   <!-- Page Wrapper -->
   <div id="wrapper">
 
     <!-- Sidebar -->
-<%- include('partials/sidebar.ejs') %>
+<%- include('../../partials/sidebar.ejs') %>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -14,15 +14,18 @@
       <div id="content">
 
         <!-- Topbar -->
-    <%- include('partials/navbar.ejs') %>
+    <%- include('../../partials/navbar.ejs') %>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+          <%- include('../../partials/message.ejs') %>
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+          <h1 class="h3 mb-4 text-gray-800">Category</h1>
+          <!-- End of Heading -->
 
+          <%- include('./table_category.ejs') %>
         </div>
         <!-- /.container-fluid -->
 
@@ -69,8 +72,16 @@
     </div>
   </div>
 
- <%- include('partials/js.ejs') %>
+  <%- include('add_modal.ejs') %>
+  <%- include('edit_modal.ejs') %>
+  <%- include('../../partials/js.ejs') %>
 
-</body>
-
-</html>
+  <script>
+    $('#dataTable').on('click', '.button-update', function(){
+      let id = $(this).data('id')
+      let name = $(this).data('name')
+      $('#edit-modal').modal('show');
+      $('.id').val(id)
+      $('.name').val(name)
+    })
+  </script>
