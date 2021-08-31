@@ -2,28 +2,42 @@ const router = require("express").Router();
 const {
   viewDashboard,
   viewCategory,
-  viewBank,
-  viewItem,
-  viewBooking,
   addCategory,
   updateCategory,
   deleteCategory,
+  viewBank,
   addBank,
   updateBank,
   deleteBank,
+  viewItem,
+  addItem,
+  showImageItem,
+  viewBooking,
+  showEditItem,
+  editItem,
+  deleteItem,
 } = require("../controllers/adminController");
-const { upload } = require("../middlewares/multer");
+const { upload, uploadMultiple } = require("../middlewares/multer");
 
 router.get("/dashboard", viewDashboard);
+// endpoint category
 router.get("/category", viewCategory);
 router.post("/category", addCategory);
 router.put("/category", updateCategory);
 router.delete("/category/:id", deleteCategory);
+// endpoint bank
 router.get("/bank", viewBank);
 router.post("/bank", upload, addBank);
 router.put("/bank", upload, updateBank);
 router.delete("/bank/:id", deleteBank);
+// endpoint item
 router.get("/item", viewItem);
+router.post("/item", uploadMultiple, addItem);
+router.get("/item/show-image/:id", showImageItem);
+router.get("/item/:id", showEditItem);
+router.put("/item/:id", uploadMultiple, editItem);
+router.delete("/item/:id", deleteItem);
+// endpoint booking
 router.get("/booking", viewBooking);
 
 module.exports = router;
