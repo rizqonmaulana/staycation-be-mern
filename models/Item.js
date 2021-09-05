@@ -44,7 +44,7 @@ const itemSchema = new mongoose.Schema({
       ref: "Image",
     },
   ],
-  featureId: [
+  featuredId: [
     {
       type: ObjectId,
       ref: "Feature",

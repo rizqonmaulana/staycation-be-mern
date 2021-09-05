@@ -11,11 +11,15 @@ const {
   deleteBank,
   viewItem,
   addItem,
+  deleteItem,
   showImageItem,
   viewBooking,
   showEditItem,
   editItem,
-  deleteItem,
+  viewDetailItem,
+  addFeature,
+  editFeature,
+  deleteFeature,
 } = require("../controllers/adminController");
 const { upload, uploadMultiple } = require("../middlewares/multer");
 
@@ -37,6 +41,11 @@ router.get("/item/show-image/:id", showImageItem);
 router.get("/item/:id", showEditItem);
 router.put("/item/:id", uploadMultiple, editItem);
 router.delete("/item/:id", deleteItem);
+// endpoint detail item
+router.get("/item/show-detail-item/:itemId", viewDetailItem);
+router.post("/item/add/feature", upload, addFeature);
+router.put("/item/update/feature", upload, editFeature);
+router.delete("/item/:itemId/feature/:id", deleteFeature);
 // endpoint booking
 router.get("/booking", viewBooking);
 
