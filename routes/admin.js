@@ -20,6 +20,9 @@ const {
   addFeature,
   editFeature,
   deleteFeature,
+  addActivity,
+  editActivity,
+  deleteActivity,
 } = require("../controllers/adminController");
 const { upload, uploadMultiple } = require("../middlewares/multer");
 
@@ -46,6 +49,10 @@ router.get("/item/show-detail-item/:itemId", viewDetailItem);
 router.post("/item/add/feature", upload, addFeature);
 router.put("/item/update/feature", upload, editFeature);
 router.delete("/item/:itemId/feature/:id", deleteFeature);
+
+router.post("/item/add/activity", upload, addActivity);
+router.put("/item/update/activity", upload, editActivity);
+router.delete("/item/:itemId/activity/:id", deleteActivity);
 // endpoint booking
 router.get("/booking", viewBooking);
 
