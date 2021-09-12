@@ -9,7 +9,7 @@ const flash = require("connect-flash");
 
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/staycation_db", {
+mongoose.connect("mongodb://127.0.0.1:27017/staycation_db_seed", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
