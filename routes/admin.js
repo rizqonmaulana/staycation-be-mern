@@ -16,7 +16,6 @@ const {
   addItem,
   deleteItem,
   showImageItem,
-  viewBooking,
   showEditItem,
   editItem,
   viewDetailItem,
@@ -26,6 +25,10 @@ const {
   addActivity,
   editActivity,
   deleteActivity,
+  viewBooking,
+  showDetailBooking,
+  actionConfirmation,
+  actionReject,
 } = require("../controllers/adminController");
 const { upload, uploadMultiple } = require("../middlewares/multer");
 
@@ -61,5 +64,8 @@ router.put("/item/update/activity", upload, editActivity);
 router.delete("/item/:itemId/activity/:id", deleteActivity);
 // endpoint booking
 router.get("/booking", viewBooking);
+router.get("/booking/:id", showDetailBooking);
+router.put("/booking/:id/confirmation", actionConfirmation);
+router.put("/booking/:id/reject", actionReject);
 
 module.exports = router;
