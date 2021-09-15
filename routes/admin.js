@@ -31,9 +31,11 @@ const {
   actionReject,
 } = require("../controllers/adminController");
 const { upload, uploadMultiple } = require("../middlewares/multer");
+const auth = require("../middlewares/auth");
 
 router.get("/signin", viewSignin);
 router.post("/signin", actionSignin);
+router.use(auth);
 router.get("/logout", actionLogout);
 router.get("/dashboard", viewDashboard);
 // endpoint category
