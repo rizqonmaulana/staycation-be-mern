@@ -492,12 +492,9 @@ module.exports = {
 
   deleteFeature: async (req, res) => {
     const { id, itemId } = req.params;
-    console.log("masuk delete feature controller");
     try {
       const feature = await Feature.findOne({ _id: id });
-      console.log("sebelum item");
       const item = await Item.findOne({ _id: itemId }).populate("featuredId");
-      console.log("ini panjang item ", item.featuredId.length);
       for (let i = 0; i < item.featuredId.length; i++) {
         if (item.featuredId[i]._id.toString() === feature._id.toString()) {
           item.featuredId.pull({ _id: feature._id });
